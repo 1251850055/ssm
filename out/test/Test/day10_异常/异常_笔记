@@ -1,0 +1,46 @@
+
+//1.Java异常时Java提供的用于处理程序中的错误的一种机制。
+// 	所谓的错误是指在程序运行的过程中，发生一些异常事件。
+// 	(如:除0溢出，数组下标越界异常,所要读取的文件不存在..........)
+// 	
+// 2.Java异常的体系结构
+// 所有的异常类型是Thowable类的子类；
+// 	它派生了两个子类：Error和Exception类。
+// 	1)Error类:比较紧靠程序本身无法恢复的严重错误。
+// 	如;内存溢出，虚拟机错误........
+// 	假如出现这种错误，应尽力使程序安全退出。
+// 	2)Exception;由Java应用程序跑出和处理的非严重错误
+// 		如;所需要的文件找不到，网络连接不通,数组下标越界.......
+//
+//3. 	运行时异常; 包括RuntimeException及其所有的子类。不要求程序
+//					必须对他们做出处理。
+//	Checked异常(非运行异常);除了运行时异常外的其他由
+//	 	Exception继承来的异常类。
+//	 当Java运行时，系统接收到异常对象时，会寻找能处理这一异常的
+//	   代码，并把它当前的异常对象交给其处理，这一异常称为捕获异常(catch)
+  
+//	try-catch-catch-finally	
+//	throws 声明抛出异常(谁调用谁捕获)
+
+//	throws 和throw的区别
+//	1.作用不同:throw 用于程序员自行产生并抛出异常
+//	    throws用于声明该方法抛出了异常
+//	2. 使用的位置不同，throw位于方法的内部，可以作为单独语句使用，
+//		throws必须跟在方法参数列表的后面，不能单独使用
+//	3.内容不同：throws 抛出一个异常对象，且只能是一个
+//						throws后面跟异常类，且可以跟多个异常类。
+
+//	自定义异常 步骤
+//1.定义异常类，继承Exception或RuntimeException
+//2.编写异常类的构造方法，并继承父类的实现，常见的构造方法有四种形式
+//
+//	public myException(){}
+//	public myException(String msg){}			//	常用
+//	public myException(String msg,Throwable cause){}
+//	public myException(Throwable cause){}
+
+
+					
+				
+							
+       	

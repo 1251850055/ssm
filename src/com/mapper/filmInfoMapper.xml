@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.FilmInfoMapper">
+
+
+    <!-- 解决表名与字段不匹配 -->
+    <resultMap type="FilmInfo" id="filmInfoResultMap">
+        <id property="id" column="id"/>
+        <result property="chName" column="chname"/>
+        <result property="enName" column="enname"/>
+        <result property="soundLanguage" column="sound_language"/>
+        <result property="fShowTime" column="fShowtime"/>
+        <result property="filmType" column="film_type"/>
+        <result property="pixLength" column="pixLength"/>
+        <result property="filmDirector" column="film_director"/>
+        <result property="filmActor" column="film_actor"/>
+        <result property="onlyDescribe" column="onlyDescribe"/>
+        <result property="gutdescipty" column="gutdescipty"/>
+        <result property="country" column="country"/>
+        <result property="pixType" column="pixtype"/>
+        <result property="picture" column="picture"/>
+        <result property="pixNumber" column="pixnumber"/>
+        <result property="picurl" column="pic_url"/>
+    </resultMap>
+
+    <select id="findFilmInfoByChname" resultMap="filmInfoResultMap" resultType="com.model.FilmInfo">
+		select t.chname,t.enname,t.sound_language,t.fShowtime,t.film_type,p.pixnumber,t.pixLength,t.film_director,t.film_actor,t.onlyDescribe,t.gutdescipty,t.country,t.pixtype,t.picture,s.pic_url 
+		from film_info t left join (select j.chname,GROUP_CONCAT(j.pixnumber) pixnumber from film_classify j group by j.chname) p on t.chname=p.chname 
+		left join (select b.film_id,GROUP_CONCAT(b.pic_url) pic_url from film_stills b group by b.film_id) s on t.id=s.film_id
+		where t.chname = #{t.chname}
+    </select>
+
+
+</mapper>
