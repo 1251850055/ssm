@@ -24,7 +24,7 @@
         <result property="picurl" column="pic_url"/>
     </resultMap>
 
-    <select id="findFilmInfoByChname" resultMap="filmInfoResultMap" resultType="com.model.FilmInfo">
+    <select id="findFilmInfoByChname" resultMap="filmInfoResultMap" resultType="FilmInfo">
 		select t.chname,t.enname,t.sound_language,t.fShowtime,t.film_type,p.pixnumber,t.pixLength,t.film_director,t.film_actor,t.onlyDescribe,t.gutdescipty,t.country,t.pixtype,t.picture,s.pic_url 
 		from film_info t left join (select j.chname,GROUP_CONCAT(j.pixnumber) pixnumber from film_classify j group by j.chname) p on t.chname=p.chname 
 		left join (select b.film_id,GROUP_CONCAT(b.pic_url) pic_url from film_stills b group by b.film_id) s on t.id=s.film_id
